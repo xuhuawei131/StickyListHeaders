@@ -1,24 +1,27 @@
 buildscript {
     repositories {
-        mavenCentral()
-    }
+        google()
+        jcenter()
 
+    }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.11.+'
+        classpath 'com.android.tools.build:gradle:2.3.3'
+
+
     }
 }
 
-def isReleaseBuild() {
-    return version.contains("SNAPSHOT") == false
-}
+
 
 allprojects {
-    version = VERSION_NAME
-    group = GROUP
-
     repositories {
-        mavenCentral()
+        google()
+        jcenter()
     }
 }
 
-apply plugin: 'android-reporting'
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+
