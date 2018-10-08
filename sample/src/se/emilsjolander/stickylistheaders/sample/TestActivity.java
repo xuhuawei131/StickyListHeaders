@@ -9,6 +9,7 @@ import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -181,6 +182,10 @@ public class TestActivity extends ActionBarActivity implements
     @Override
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public void onStickyHeaderOffsetChanged(StickyListHeadersListView l, View header, int offset) {
+        int position= (Integer)header.getTag(R.string.app_name);
+
+        Log.v("xhw","onStickyHeaderOffsetChanged header position: "+position+" offset: "+offset);
+
         if (fadeHeader && Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             header.setAlpha(1 - (offset / (float) header.getMeasuredHeight()));
         }
@@ -190,6 +195,11 @@ public class TestActivity extends ActionBarActivity implements
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public void onStickyHeaderChanged(StickyListHeadersListView l, View header, int itemPosition, long headerId) {
         header.setAlpha(1);
+
+       int position= (Integer)header.getTag(R.string.app_name);
+
+
+        Log.v("xhw","onStickyHeaderChanged header position:"+position+" itemPosition "+itemPosition+" headerId "+headerId);
     }
 
 }

@@ -17,7 +17,9 @@ public class TestBaseAdapter extends BaseAdapter implements
 
     private final Context mContext;
     private String[] mCountries;
+    //分组header所在position
     private int[] mSectionIndices;
+    //每个header显示的内容
     private Character[] mSectionLetters;
     private LayoutInflater mInflater;
 
@@ -103,6 +105,8 @@ public class TestBaseAdapter extends BaseAdapter implements
         // set header text as first char in name
         CharSequence headerChar = mCountries[position].subSequence(0, 1);
         holder.text.setText(headerChar);
+
+        convertView.setTag(R.string.app_name,position);
 
         return convertView;
     }
